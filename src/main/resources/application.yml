@@ -1,0 +1,21 @@
+server:
+  port: 8090
+spring:
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 283675492100-4sp367tcl8stj3ici0qm1ovc8rt1t1rm.apps.googleusercontent.com
+            client-secret: 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
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password!456
+    driver-class-name: org.postgresql.Driver
