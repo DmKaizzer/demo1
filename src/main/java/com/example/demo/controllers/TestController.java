@@ -13,8 +13,8 @@ import java.util.Map;
 public class TestController {
 
     @GetMapping(value = "/get-test-message")
-    public Map<String, Object> getTestMessage(@AuthenticationPrincipal OAuth2User oAuth2User) {
-        return oAuth2User.getAttributes();
+    public String getTestMessage() {
+        return "String test message";
     }
 
 }
