@@ -3,10 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.dto.JWTRequest;
 import com.example.demo.services.UserService;
 import com.example.demo.utils.JwtTokenUtils;
-import lombok.Data;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,8 +22,9 @@ public class AuthController {
     @PostMapping("/auth")
     public String createAuthToken(@RequestBody JWTRequest jwtRequest) {
         try {
+            Thread.sleep(5000L);
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUserName(), jwtRequest.getPassword()));            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUserName(), jwtRequest.getPassword()));
-        } catch (BadCredentialsException exception) {
+        } catch (BadCredentialsException | InterruptedException exception) {
             return exception.getMessage();
         }
         UserDetails userDetails = userService.loadUserByUsername(jwtRequest.getUserName());
